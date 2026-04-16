@@ -1,0 +1,4 @@
+name: Documentation update
+body:
+  - type: textarea
+    attributes: {label: Document path and change summary}

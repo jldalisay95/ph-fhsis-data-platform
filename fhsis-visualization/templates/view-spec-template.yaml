@@ -1,0 +1,11 @@
+view_id: "[USER INPUT NEEDED]"
+title: "[USER INPUT NEEDED]"
+indicator_ids: []
+metadata_requirements:
+  - source_document_id
+  - report_version_id
+  - indicator_definition_version_id
+  - geography_version_id
+comparability_gate: "required"
+status: "draft"
+notes: "[REQUIRES VALIDATION]"

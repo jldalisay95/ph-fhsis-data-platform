@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ph-fhsis-data-platform"
+version = "0.1.0"
+description = "Starter scaffold for Philippine FHSIS harmonization and visualization"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["pyyaml>=6.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[tool.setuptools.packages.find]
+where = ["fhsis-reusable-database/src"]
+
+[tool.pytest.ini_options]
+testpaths = ["fhsis-reusable-database/tests"]
+
+[tool.ruff]
+line-length = 100

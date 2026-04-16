@@ -1,0 +1,6 @@
+rules:
+  - rule_id: "[USER INPUT NEEDED]"
+    layer: silver
+    description: "[USER INPUT NEEDED]"
+    severity: medium
+    validation_status: draft
