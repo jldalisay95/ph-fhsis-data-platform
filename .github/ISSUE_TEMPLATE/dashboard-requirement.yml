@@ -1,6 +1,42 @@
 name: Dashboard requirement
+description: Add or revise dashboard requirements with metadata-aware behavior.
+title: "[Dashboard] "
+labels: ["area:visualization", "type:feature", "status:triage"]
 body:
+  - type: dropdown
+    id: milestone
+    attributes:
+      label: Target milestone
+      options:
+        - M4 — Visualization MVP with Metadata Gates
+        - M5 — Release Readiness (v0.1.0)
+    validations:
+      required: true
   - type: textarea
-    attributes: {label: Audience and decision context, placeholder: "[MISSING SOURCE]"}
+    id: audience
+    attributes:
+      label: Audience and decision context
+      placeholder: "[MISSING SOURCE]"
+    validations:
+      required: true
   - type: textarea
-    attributes: {label: Required metadata, placeholder: "indicator/version/geography/comparability"}
+    id: metadata
+    attributes:
+      label: Required metadata
+      placeholder: indicator/version/geography/comparability
+    validations:
+      required: true
+  - type: textarea
+    id: warning_behavior
+    attributes:
+      label: Comparability warning behavior
+      placeholder: Conditions for warnings and fallback UI state.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance criteria
+      placeholder: Include UX/QA checks.
+    validations:
+      required: true

@@ -1,4 +1,36 @@
 name: Documentation update
+description: Improve docs, governance guidance, ADRs, or reference material.
+title: "[Docs] "
+labels: ["area:docs", "type:docs", "status:triage"]
 body:
+  - type: dropdown
+    id: milestone
+    attributes:
+      label: Target milestone
+      options:
+        - M0 — Governance & Operating Baseline
+        - M3 — Comparability & Indicator Governance
+        - M5 — Release Readiness (v0.1.0)
+    validations:
+      required: true
   - type: textarea
-    attributes: {label: Document path and change summary}
+    id: summary
+    attributes:
+      label: Document path and change summary
+      placeholder: List file paths and the key improvement.
+    validations:
+      required: true
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Why now
+      placeholder: What risk or value this documentation change addresses.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance criteria
+      placeholder: What conditions make this issue complete.
+    validations:
+      required: true

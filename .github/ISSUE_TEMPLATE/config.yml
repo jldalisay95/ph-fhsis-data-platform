@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Governance playbook
+    url: ../../docs/governance/README.md
+    about: Review planning, lifecycle, and quality rules before opening an issue.
+  - name: Milestones and labels
+    url: ../../docs/governance/milestones.md
+    about: Choose the correct milestone and labels for faster triage.

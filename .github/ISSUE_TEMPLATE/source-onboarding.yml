@@ -1,6 +1,43 @@
 name: Source onboarding
+description: Register a new source with provenance and readiness checks.
+title: "[Source] "
+labels: ["area:database", "type:feature", "status:triage"]
 body:
+  - type: dropdown
+    id: milestone
+    attributes:
+      label: Target milestone
+      options:
+        - M1 — Source Registry & Provenance Foundation
+        - M2 — Bronze/Silver Normalization Foundation
+        - M3 — Comparability & Indicator Governance
+    validations:
+      required: true
   - type: textarea
-    attributes: {label: Source description, placeholder: "[USER INPUT NEEDED]"}
+    id: problem
+    attributes:
+      label: Problem statement
+      placeholder: Why this source is needed and what decisions it supports.
+    validations:
+      required: true
   - type: textarea
-    attributes: {label: Provenance details, placeholder: "URL, retrieval date, checksum"}
+    id: source_description
+    attributes:
+      label: Source description
+      placeholder: "[USER INPUT NEEDED]"
+    validations:
+      required: true
+  - type: textarea
+    id: provenance_details
+    attributes:
+      label: Provenance details
+      placeholder: URL, retrieval date, owner, checksum/hash, license notes.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance criteria
+      placeholder: Bullet list of verifiable outcomes.
+    validations:
+      required: true
