@@ -1,6 +1,47 @@
 name: Transform implementation
+description: Implement or update extract/bronze/silver/gold transformation logic.
+title: "[Transform] "
+labels: ["area:database", "type:feature", "status:triage"]
 body:
+  - type: dropdown
+    id: milestone
+    attributes:
+      label: Target milestone
+      options:
+        - M2 — Bronze/Silver Normalization Foundation
+        - M3 — Comparability & Indicator Governance
+        - M5 — Release Readiness (v0.1.0)
+    validations:
+      required: true
+  - type: dropdown
+    id: stage
+    attributes:
+      label: Primary stage
+      options:
+        - Extract
+        - Bronze
+        - Silver
+        - Gold
+    validations:
+      required: true
   - type: textarea
-    attributes: {label: Stage and inputs, placeholder: "extract/bronze/silver/gold"}
+    id: stage_inputs
+    attributes:
+      label: Stage inputs
+      placeholder: Input datasets/tables and key assumptions.
+    validations:
+      required: true
   - type: textarea
-    attributes: {label: Provenance outputs, placeholder: "transform_run, quality_issue refs"}
+    id: provenance_outputs
+    attributes:
+      label: Provenance outputs
+      placeholder: transform_run, source refs, quality_issue refs.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance criteria
+      placeholder: Include expected tests and validation checks.
+    validations:
+      required: true

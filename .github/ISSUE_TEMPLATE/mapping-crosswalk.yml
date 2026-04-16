@@ -1,6 +1,35 @@
 name: Mapping/crosswalk task
+description: Create or revise mapping logic and crosswalk documentation.
+title: "[Mapping] "
+labels: ["area:database", "type:feature", "status:triage", "risk:comparability"]
 body:
+  - type: dropdown
+    id: milestone
+    attributes:
+      label: Target milestone
+      options:
+        - M2 — Bronze/Silver Normalization Foundation
+        - M3 — Comparability & Indicator Governance
+    validations:
+      required: true
   - type: textarea
-    attributes: {label: Mapping scope, placeholder: "[USER INPUT NEEDED]"}
+    id: mapping_scope
+    attributes:
+      label: Mapping scope
+      placeholder: "[USER INPUT NEEDED]"
+    validations:
+      required: true
   - type: textarea
-    attributes: {label: Comparability risk notes, placeholder: "unsafe_default by default"}
+    id: comparability_risk
+    attributes:
+      label: Comparability risk notes
+      placeholder: Describe unsafe-default behavior and risk controls.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance criteria
+      placeholder: Include validation checks and documentation deliverables.
+    validations:
+      required: true

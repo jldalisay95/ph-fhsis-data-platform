@@ -1,6 +1,48 @@
 name: Bug report
+description: Report a defect affecting data correctness, workflow, or documentation.
+title: "[Bug] "
+labels: ["type:bug", "status:triage"]
 body:
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - P0 — Release blocking
+        - P1 — High impact
+        - P2 — Moderate impact
+        - P3 — Low impact
+    validations:
+      required: true
+  - type: dropdown
+    id: milestone
+    attributes:
+      label: Target milestone
+      options:
+        - M0 — Governance & Operating Baseline
+        - M1 — Source Registry & Provenance Foundation
+        - M2 — Bronze/Silver Normalization Foundation
+        - M3 — Comparability & Indicator Governance
+        - M4 — Visualization MVP with Metadata Gates
+        - M5 — Release Readiness (v0.1.0)
+    validations:
+      required: true
   - type: textarea
-    attributes: {label: What happened}
+    id: happened
+    attributes:
+      label: What happened
+    validations:
+      required: true
   - type: textarea
-    attributes: {label: Expected behavior}
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: Ordered list with minimal reproducible case.
+    validations:
+      required: true
