@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/fhsis/schema-bundle.json",
+  "title": "FHSIS Schema Bundle (Starter)",
+  "type": "object",
+  "required": [
+    "source_document",
+    "source_component",
+    "report_version_registry",
+    "geography_version",
+    "geography_unit",
+    "indicator_definition_version",
+    "indicator_alias",
+    "observation_fact",
+    "completeness_fact",
+    "transform_run",
+    "quality_issue"
+  ],
+  "properties": {
+    "source_document": {"$ref": "#/$defs/source_document"},
+    "source_component": {"$ref": "#/$defs/source_component"},
+    "report_version_registry": {"$ref": "#/$defs/report_version_registry"},
+    "geography_version": {"$ref": "#/$defs/geography_version"},
+    "geography_unit": {"$ref": "#/$defs/geography_unit"},
+    "indicator_definition_version": {"$ref": "#/$defs/indicator_definition_version"},
+    "indicator_alias": {"$ref": "#/$defs/indicator_alias"},
+    "observation_fact": {"$ref": "#/$defs/observation_fact"},
+    "completeness_fact": {"$ref": "#/$defs/completeness_fact"},
+    "transform_run": {"$ref": "#/$defs/transform_run"},
+    "quality_issue": {"$ref": "#/$defs/quality_issue"}
+  },
+  "$defs": {
+    "common_provenance": {
+      "type": "object",
+      "required": ["created_at", "created_by", "validation_status"],
+      "properties": {
+        "created_at": {"type": "string", "format": "date-time"},
+        "created_by": {"type": "string"},
+        "source_reference": {"type": "string", "description": "[MISSING SOURCE] canonical citation scheme"},
+        "checksum": {"type": "string"},
+        "validation_status": {"type": "string", "enum": ["draft", "pending_validation", "validated", "rejected"]},
+        "notes": {"type": "string"}
+      }
+    },
+    "source_document": {
+      "type": "object",
+      "required": ["source_document_id", "title", "retrieved_at", "provenance"],
+      "properties": {
+        "source_document_id": {"type": "string"},
+        "title": {"type": "string"},
+        "publisher": {"type": "string", "description": "[REQUIRES VALIDATION]"},
+        "retrieved_at": {"type": "string", "format": "date-time"},
+        "access_level": {"type": "string", "enum": ["public", "restricted"]},
+        "provenance": {"$ref": "#/$defs/common_provenance"}
+      }
+    },
+    "source_component": {"type": "object", "required": ["source_component_id", "source_document_id", "component_type", "provenance"], "properties": {"source_component_id": {"type": "string"}, "source_document_id": {"type": "string"}, "component_type": {"type": "string"}, "provenance": {"$ref": "#/$defs/common_provenance"}}},
+    "report_version_registry": {"type": "object", "required": ["report_version_id", "effective_start", "provenance"], "properties": {"report_version_id": {"type": "string"}, "effective_start": {"type": "string", "format": "date"}, "effective_end": {"type": "string", "format": "date"}, "provenance": {"$ref": "#/$defs/common_provenance"}}},
+    "geography_version": {"type": "object", "required": ["geography_version_id", "authority", "provenance"], "properties": {"geography_version_id": {"type": "string"}, "authority": {"type": "string", "description": "[MISSING SOURCE]"}, "provenance": {"$ref": "#/$defs/common_provenance"}}},
+    "geography_unit": {"type": "object", "required": ["geography_unit_id", "geography_version_id", "name", "provenance"], "properties": {"geography_unit_id": {"type": "string"}, "geography_version_id": {"type": "string"}, "name": {"type": "string"}, "parent_unit_id": {"type": "string"}, "provenance": {"$ref": "#/$defs/common_provenance"}}},
+    "indicator_definition_version": {"type": "object", "required": ["indicator_definition_version_id", "indicator_code", "version_label", "provenance"], "properties": {"indicator_definition_version_id": {"type": "string"}, "indicator_code": {"type": "string", "description": "[USER INPUT NEEDED] authoritative code system"}, "version_label": {"type": "string"}, "definition_text": {"type": "string", "description": "[MISSING SOURCE]"}, "provenance": {"$ref": "#/$defs/common_provenance"}}},
+    "indicator_alias": {"type": "object", "required": ["indicator_alias_id", "indicator_definition_version_id", "alias_text", "provenance"], "properties": {"indicator_alias_id": {"type": "string"}, "indicator_definition_version_id": {"type": "string"}, "alias_text": {"type": "string"}, "provenance": {"$ref": "#/$defs/common_provenance"}}},
+    "observation_fact": {"type": "object", "required": ["observation_id", "period_start", "period_end", "value", "indicator_definition_version_id", "geography_unit_id", "comparability_status", "provenance"], "properties": {"observation_id": {"type": "string"}, "period_start": {"type": "string", "format": "date"}, "period_end": {"type": "string", "format": "date"}, "value": {"type": "number"}, "unit": {"type": "string", "description": "[REQUIRES VALIDATION]"}, "indicator_definition_version_id": {"type": "string"}, "geography_unit_id": {"type": "string"}, "comparability_status": {"type": "string", "enum": ["unsafe_default", "under_review", "validated"]}, "provenance": {"$ref": "#/$defs/common_provenance"}}},
+    "completeness_fact": {"type": "object", "required": ["completeness_id", "observation_id", "status", "provenance"], "properties": {"completeness_id": {"type": "string"}, "observation_id": {"type": "string"}, "status": {"type": "string", "enum": ["complete", "partial", "missing"]}, "provenance": {"$ref": "#/$defs/common_provenance"}}},
+    "transform_run": {"type": "object", "required": ["transform_run_id", "pipeline_stage", "run_at", "provenance"], "properties": {"transform_run_id": {"type": "string"}, "pipeline_stage": {"type": "string", "enum": ["extract", "bronze", "silver", "gold"]}, "run_at": {"type": "string", "format": "date-time"}, "input_refs": {"type": "array", "items": {"type": "string"}}, "provenance": {"$ref": "#/$defs/common_provenance"}}},
+    "quality_issue": {"type": "object", "required": ["quality_issue_id", "severity", "status", "provenance"], "properties": {"quality_issue_id": {"type": "string"}, "severity": {"type": "string", "enum": ["low", "medium", "high", "critical"]}, "status": {"type": "string", "enum": ["open", "accepted_risk", "resolved"]}, "related_ref": {"type": "string"}, "provenance": {"$ref": "#/$defs/common_provenance"}}}
+  }
+}

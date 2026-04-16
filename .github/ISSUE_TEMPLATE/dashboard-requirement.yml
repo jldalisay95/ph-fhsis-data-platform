@@ -1,0 +1,6 @@
+name: Dashboard requirement
+body:
+  - type: textarea
+    attributes: {label: Audience and decision context, placeholder: "[MISSING SOURCE]"}
+  - type: textarea
+    attributes: {label: Required metadata, placeholder: "indicator/version/geography/comparability"}

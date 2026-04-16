@@ -1,0 +1,6 @@
+name: Transform implementation
+body:
+  - type: textarea
+    attributes: {label: Stage and inputs, placeholder: "extract/bronze/silver/gold"}
+  - type: textarea
+    attributes: {label: Provenance outputs, placeholder: "transform_run, quality_issue refs"}

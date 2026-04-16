@@ -1,0 +1,6 @@
+name: Source onboarding
+body:
+  - type: textarea
+    attributes: {label: Source description, placeholder: "[USER INPUT NEEDED]"}
+  - type: textarea
+    attributes: {label: Provenance details, placeholder: "URL, retrieval date, checksum"}

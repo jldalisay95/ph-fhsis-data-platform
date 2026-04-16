@@ -1,0 +1,6 @@
+name: Mapping/crosswalk task
+body:
+  - type: textarea
+    attributes: {label: Mapping scope, placeholder: "[USER INPUT NEEDED]"}
+  - type: textarea
+    attributes: {label: Comparability risk notes, placeholder: "unsafe_default by default"}

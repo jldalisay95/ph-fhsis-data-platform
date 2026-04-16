@@ -1,0 +1,6 @@
+name: Bug report
+body:
+  - type: textarea
+    attributes: {label: What happened}
+  - type: textarea
+    attributes: {label: Expected behavior}
